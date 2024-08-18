@@ -1,0 +1,26 @@
+model User {
+  id              String      @id @default(uuid())
+  uid             Int         @unique @default(autoincrement())
+  email           String     @unique @db.VarChar(255)
+  firstName       String     @db.VarChar(255)
+  lastName        String     @db.VarChar(255)
+  middleName      String?     @db.VarChar(255)
+  phoneNumber     String?      @db.VarChar(20)
+  image          String?
+  countryCode     String?      @default("NG") @db.VarChar(3)
+  hashedPassword  String
+
+  dob                  DateTime?
+  gender               String?
+  createdAt            DateTime               @default(now())
+  updatedAt            DateTime               @updatedAt
+  sessions            UserSession[]
+  @@index([email, phoneNumber])
+}
+
+model UserSession {
+  id        String    @id @default(cuid())
+  userId    String
+  expiresAt DateTime?
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

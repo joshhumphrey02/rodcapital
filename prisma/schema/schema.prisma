@@ -1,0 +1,12 @@
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["relationJoins", "tracing", "prismaSchemaFolder", "views", "postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [postgis]
+}
+
