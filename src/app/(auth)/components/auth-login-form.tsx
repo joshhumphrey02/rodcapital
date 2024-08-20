@@ -17,9 +17,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { LoginInput, loginSchema } from '@/lib/validators/auth';
 import { useFormState } from 'react-dom';
-import { useToast } from '@/components/ui/use-toast';
 import { login } from '@/lib/auth/actions';
 import { LoaderIcon } from 'lucide-react';
+import { toast } from 'sonner';
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -27,7 +27,6 @@ export default function AuthLoginForm({
 	className,
 	...props
 }: UserAuthFormProps) {
-	const { toast } = useToast();
 	const form = useForm<LoginInput>({
 		resolver: zodResolver(loginSchema),
 		defaultValues: {
@@ -43,11 +42,7 @@ export default function AuthLoginForm({
 	}
 	React.useEffect(() => {
 		if (state?.formError) {
-			toast({
-				title: 'Error',
-				description: state?.formError || 'An error occurred',
-				variant: 'destructive',
-			});
+			toast.error(state?.formError || 'An error occurred');
 		}
 		setLoading(false);
 	}, [state?.formError, state?.fieldError]);

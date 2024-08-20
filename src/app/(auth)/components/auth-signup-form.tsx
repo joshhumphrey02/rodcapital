@@ -17,9 +17,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { SignupInput, signupSchema } from '@/lib/validators/auth';
 import { useFormState } from 'react-dom';
-import { useToast } from '@/components/ui/use-toast';
 import { signup } from '@/lib/auth/actions';
 import { LoaderIcon } from 'lucide-react';
+import { toast } from 'sonner';
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -27,7 +27,6 @@ export default function AuthSignupForm({
 	className,
 	...props
 }: UserAuthFormProps) {
-	const { toast } = useToast();
 	const form = useForm<SignupInput>({
 		resolver: zodResolver(signupSchema),
 		defaultValues: {
@@ -47,11 +46,7 @@ export default function AuthSignupForm({
 	}
 	React.useEffect(() => {
 		if (state?.formError) {
-			toast({
-				title: 'Error',
-				description: state?.formError || 'An error occurred',
-				variant: 'destructive',
-			});
+			toast.error(state?.formError || 'An error occurred');
 		}
 		setLoading(false);
 	}, [state?.formError, state?.fieldError]);

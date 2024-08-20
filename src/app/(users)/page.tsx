@@ -1,6 +1,8 @@
 import prisma from '@/lib/prisma';
 import Image from 'next/image';
 import './style.css';
+import { logout } from '@/lib/auth/actions';
+import Logout from '@/components/logout';
 
 const Home = async () => {
 	const userInfo = await prisma.user.findMany();
@@ -38,6 +40,9 @@ const Home = async () => {
 									<a href="#contact" className="hover:text-orange-500">
 										Contact Us
 									</a>
+								</li>
+								<li>
+									<Logout />
 								</li>
 							</ul>
 						</nav>
