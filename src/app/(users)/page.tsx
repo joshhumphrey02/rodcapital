@@ -62,12 +62,7 @@ const Home = async () => {
 							</p>
 						</div>
 						<div className="md:w-1/2">
-							<Image
-								height={40}
-								width={40}
-								src="/bannerImage.png"
-								alt="banner"
-							/>
+							<Image height={40} width={40} src="/bannerimg.png" alt="banner" />
 						</div>
 					</div>
 
