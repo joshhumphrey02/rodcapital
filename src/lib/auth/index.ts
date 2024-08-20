@@ -1,7 +1,6 @@
 import { Lucia, TimeSpan } from 'lucia';
 import { PrismaAdapter } from '@lucia-auth/adapter-prisma';
 import { User, PrismaClient } from '@prisma/client';
-import { env } from '@/env';
 
 const client = new PrismaClient();
 const adapter = new PrismaAdapter(client.userSession, client.user);
@@ -20,7 +19,7 @@ export const lucia = new Lucia(adapter, {
 		name: 'session',
 		expires: false, // session cookies have very long lifespan (2 years)
 		attributes: {
-			secure: env.NODE_ENV === 'production',
+			secure: process.env.NODE_ENV === 'production',
 		},
 	},
 });
