@@ -5,29 +5,39 @@ const Home = async () => {
 		<div className="w-full">
 			<div style={{ background: 'rgba(16, 20, 73, 0.884)' }}>
 				<div className="container">
-					<header>
+					<header className="text-white">
 						<div className="" style={{ flex: 1, paddingLeft: '30px' }}>
 							<img src="logo.jpg" alt="logo" />
 						</div>
 						<div className="navBar" style={{ flex: '3' }}>
 							<ul>
 								<li>
-									<a href="#">Home</a>
+									<a className="text-white" href="#">
+										Home
+									</a>
 								</li>
 
 								<li>
-									<a href="#about">About</a>
+									<a className="text-white" href="#about">
+										About
+									</a>
 								</li>
 
 								<li>
-									<a href="#investment">Investment Plans</a>
+									<a className="text-white" href="#investment">
+										Investment Plans
+									</a>
 								</li>
 								<li>
-									<a href="#invest">Invest</a>
+									<a className="text-white" href="#invest">
+										Invest
+									</a>
 								</li>
 
 								<li>
-									<a href="#contact">Contact Us</a>
+									<a className="text-white" href="#contact">
+										Contact Us
+									</a>
 								</li>
 							</ul>
 						</div>
