@@ -54,7 +54,7 @@ export default function AuthLoginForm({
 					buttonVariants({ variant: 'ghost' }),
 					'absolute right-4 top-4 md:right-8 md:top-8'
 				)}>
-				Open Account
+				افتح حساب
 			</Link>
 			<div className={cn('grid gap-6', className)} {...props}>
 				<Form {...form}>
@@ -65,11 +65,11 @@ export default function AuthLoginForm({
 								name="email"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Email</FormLabel>
+										<FormLabel>البريد الإلكتروني</FormLabel>
 										<FormControl>
 											<Input
 												type="email"
-												placeholder="Your email address"
+												placeholder="عنوان بريدك الإلكتروني"
 												{...field}
 											/>
 										</FormControl>
@@ -83,17 +83,17 @@ export default function AuthLoginForm({
 								render={({ field }) => (
 									<FormItem>
 										<div className="flex items-center">
-											<FormLabel>Password</FormLabel>
+											<FormLabel>كلمة المرور</FormLabel>
 											<Link
 												href="/auth/reset-password"
 												className="ml-auto inline-block text-sm underline">
-												Forgot your password?
+												هل نسيت كلمة المرور؟
 											</Link>
 										</div>
 										<FormControl>
 											<Input
 												type="password"
-												placeholder="Password (min 8 characters)"
+												placeholder="كلمة المرور (8 أحرف على الأقل)"
 												{...field}
 											/>
 										</FormControl>
@@ -107,7 +107,7 @@ export default function AuthLoginForm({
 								{loading && (
 									<LoaderIcon className="mr-2 h-4 w-4 animate-spin" />
 								)}
-								Login
+								تسجيل الدخول
 							</Button>
 						</div>
 					</form>

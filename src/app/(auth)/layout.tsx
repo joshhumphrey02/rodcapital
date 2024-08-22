@@ -32,8 +32,8 @@ export default async function AuthLayout({
 					<div className="relative z-20 mt-auto">
 						<blockquote className="space-y-2">
 							<p className="text-lg">
-								“Rod Capital is the best thing that happened to my me. It has
-								helped me streamline my operations and increase my revenue.”
+								"رود كابيتال هو أفضل شيء حدث لي. لقد ساعدني في تبسيط عملياتي
+								وزيادة إيراداتي."
 							</p>
 							<footer className="text-sm">
 								<cite className="not-italic">— Jane Doe</cite>

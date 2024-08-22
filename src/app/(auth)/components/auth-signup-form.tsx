@@ -58,7 +58,7 @@ export default function AuthSignupForm({
 					buttonVariants({ variant: 'ghost' }),
 					'absolute right-4 top-4 md:right-8 md:top-8'
 				)}>
-				Login
+				تسجيل الدخول
 			</Link>
 			<div className={cn('grid gap-6', className)} {...props}>
 				<Form {...form}>
@@ -70,9 +70,9 @@ export default function AuthSignupForm({
 									name="firstName"
 									render={({ field }) => (
 										<FormItem>
-											<FormLabel>First name</FormLabel>
+											<FormLabel>الاسم الأول</FormLabel>
 											<FormControl>
-												<Input placeholder="Your first name" {...field} />
+												<Input placeholder="اسمك الأول" {...field} />
 											</FormControl>
 											<FormMessage />
 										</FormItem>
@@ -84,9 +84,9 @@ export default function AuthSignupForm({
 									name="lastName"
 									render={({ field }) => (
 										<FormItem>
-											<FormLabel>Last name</FormLabel>
+											<FormLabel>الاسم الأخير</FormLabel>
 											<FormControl>
-												<Input placeholder="Your last name" {...field} />
+												<Input placeholder="اسمك الأخير" {...field} />
 											</FormControl>
 											<FormMessage />
 										</FormItem>
@@ -99,11 +99,11 @@ export default function AuthSignupForm({
 								name="email"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Email</FormLabel>
+										<FormLabel>البريد الإلكتروني</FormLabel>
 										<FormControl>
 											<Input
 												type="email"
-												placeholder="Your email address"
+												placeholder="عنوان بريدك الإلكتروني"
 												{...field}
 											/>
 										</FormControl>
@@ -117,13 +117,9 @@ export default function AuthSignupForm({
 								name="phoneNumber"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Phone Number</FormLabel>
+										<FormLabel>رقم الهاتف</FormLabel>
 										<FormControl>
-											<Input
-												type="text"
-												placeholder="Your phone number"
-												{...field}
-											/>
+											<Input type="text" placeholder="رقم هاتفك" {...field} />
 										</FormControl>
 										<FormMessage />
 									</FormItem>
@@ -135,11 +131,11 @@ export default function AuthSignupForm({
 								name="password"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Password</FormLabel>
+										<FormLabel>كلمة المرور</FormLabel>
 										<FormControl>
 											<Input
 												type="password"
-												placeholder="Password (min 8 characters)"
+												placeholder="كلمة المرور (8 أحرف على الأقل)"
 												{...field}
 											/>
 										</FormControl>
@@ -152,24 +148,24 @@ export default function AuthSignupForm({
 								{loading && (
 									<LoaderIcon className="mr-2 h-4 w-4 animate-spin" />
 								)}
-								Continue
+								متابعة
 							</Button>
 						</div>
 					</form>
 				</Form>
 			</div>
 			<p className="px-8 text-center text-sm text-muted-foreground">
-				By clicking continue, you agree to our{' '}
+				بالضغط على متابعة، فإنك توافق على{' '}
 				<Link
 					href="/terms"
 					className="underline underline-offset-4 hover:text-primary">
-					Terms of Service
+					شروط الخدمة
 				</Link>{' '}
-				and{' '}
+				و{' '}
 				<Link
 					href="/privacy"
 					className="underline underline-offset-4 hover:text-primary">
-					Privacy Policy
+					سياسة الخصوصية
 				</Link>
 				.
 			</p>
