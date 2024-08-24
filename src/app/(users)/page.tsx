@@ -1,7 +1,16 @@
 'use client';
+import { useEffect } from 'react';
 import './home.css';
 
 const Home = () => {
+	useEffect(() => {
+		const btns = document.querySelectorAll('.toggle-btn');
+		btns.forEach((btn) =>
+			btn.addEventListener('click', () => {
+				console.log('nothing');
+			})
+		);
+	}, []);
 	return (
 		<div className="w-full">
 			<div className="px-2" style={{ background: 'rgba(16, 20, 73, 0.884)' }}>
@@ -13,30 +22,30 @@ const Home = () => {
 						<div className="nav-bar" style={{ flex: 3 }}>
 							<ul>
 								<li>
-									<a className="text-light" href="#">
+									<a className="text-white" href="#">
 										البيت
 									</a>
 								</li>
 
 								<li>
-									<a className="text-light" href="#about">
+									<a className="text-white" href="#about">
 										معلومات عنا
 									</a>
 								</li>
 
 								<li>
-									<a className="text-light" href="#investment">
+									<a className="text-white" href="#investment">
 										خطط الاستثمار
 									</a>
 								</li>
 								<li>
-									<a className="text-light" href="#invest">
+									<a className="text-white" href="#invest">
 										استثمر
 									</a>
 								</li>
 
 								<li>
-									<a className="text-light" href="#contact">
+									<a className="text-white" href="#contact">
 										اتصل بنا
 									</a>
 								</li>
@@ -53,8 +62,9 @@ const Home = () => {
 							الناشئة. لا تنتظر—اغتنم الفرصة وابدأ في بناء مستقبلك المالي الآن
 							من أجل غد أكثر أمانًا.
 						</div>
-						<div className="banner-img" />
-						<img src="bannerImg.png" />
+						<div className="banner-img">
+							<img className=" object-fill w-full h-full" src="bannerImg.png" />
+						</div>
 					</div>
 				</div>
 
@@ -319,51 +329,49 @@ const Home = () => {
 									<td>$75,000</td>
 									<td>Binance</td>
 									<td>19th Aug 2024</td>
-									<td style={{ background: 'green' }}>موافق عليه</td>
+									<td>موافق عليه</td>
 								</tr>
 								<tr>
 									<td>Hassan</td>
 									<td>$14,000</td>
 									<td>CashApp</td>
 									<td>15th Aug 2024</td>
-									<td style={{ background: 'green' }}>موافق عليه</td>
+									<td>موافق عليه</td>
 								</tr>
 								<tr>
 									<td>Hopkins</td>
 									<td>$6,200</td>
 									<td>Trust Wallet</td>
 									<td>11th Aug 2024</td>
-									<td style={{ background: 'rgb(192, 165, 47)' }}>
-										قيد الانتظار{' '}
-									</td>
+									<td>قيد الانتظار </td>
 								</tr>
 								<tr>
 									<td>Lee</td>
 									<td>$3,750</td>
 									<td>CashApp</td>
 									<td>8th Aug 2024</td>
-									<td style={{ background: 'green' }}>موافق عليه</td>
+									<td>موافق عليه</td>
 								</tr>
 								<tr>
 									<td>Faruk</td>
 									<td>$30,150</td>
 									<td>Bybit</td>
 									<td>3rd Aug 2024</td>
-									<td style={{ background: 'green' }}>موافق عليه</td>
+									<td>موافق عليه</td>
 								</tr>
 								<tr>
 									<td>Ray</td>
 									<td>$6,700</td>
 									<td>CashApp</td>
 									<td>29th Jul 2024</td>
-									<td style={{ background: 'green' }}>موافق عليه</td>
+									<td>موافق عليه</td>
 								</tr>
 								<tr>
 									<td>Fibika</td>
 									<td>$2,000</td>
 									<td>CashApp</td>
 									<td>28th Jul 2024</td>
-									<td style={{ background: 'green' }}>موافق عليه</td>
+									<td>موافق عليه</td>
 								</tr>
 							</tbody>
 						</table>
@@ -404,7 +412,7 @@ const Home = () => {
 							<span style={{ color: 'orange' }}>المستثمرين</span>
 						</p>
 					</div>
-					<div className="flex card">
+					<div className="flex card" style={{ gap: '14px' }}>
 						<div className="flex border" style={{ gap: '10px' }}>
 							<div style={{ flex: 1 }}>
 								<img

@@ -67,19 +67,14 @@ header div button {
 .banner {
 	height: 100vh;
 	padding: 70px 10px 10px 50px;
-	display: flex;
-	align-items: top;
-	justify-content: space-around;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 2rem;
 }
 .banner-left {
-	flex: 2;
 	line-height: 50px;
 }
 
-.banner div img {
-	width: 450px;
-	flex: 1;
-}
 .about {
 	width: 100%;
 	height: 100vh;
@@ -131,7 +126,7 @@ header div button {
 	background-color: black;
 	visibility: visible;
 
-	display: flex;
+	display: none;
 	flex-direction: column;
 	align-items: center;
 	justify-content: left;
@@ -160,6 +155,9 @@ header div button {
 	padding: 10px;
 	border-radius: 5px;
 	background-color: black;
+}
+thead {
+	background: transparent;
 }
 .recents-table {
 	width: 100vw;
@@ -246,18 +244,13 @@ footer {
 		justify-content: center;
 	}
 	.banner {
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
+		grid-template-columns: 1fr;
 		padding: 10px 7px;
 	}
 
 	.banner-left {
 		line-height: normal;
 		margin-top: 50px;
-	}
-	.banner div img {
-		width: 400px;
 	}
 	.about {
 		flex-direction: column;
