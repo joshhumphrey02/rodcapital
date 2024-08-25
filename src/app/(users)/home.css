@@ -275,24 +275,6 @@ footer {
 	.types {
 		position: relative;
 	}
-	.popup {
-		position: absolute;
-
-		right: 0;
-
-		bottom: 0;
-
-		background-color: black;
-		visibility: visible;
-
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-
-		line-height: 10px;
-		border-radius: 5px;
-	}
 	.invest-section {
 		flex-direction: column;
 		height: auto;

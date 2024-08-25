@@ -1,16 +1,57 @@
 'use client';
-import { useEffect } from 'react';
 import './home.css';
+import {
+	AlertDialog,
+	AlertDialogCancel,
+	AlertDialogContent,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
+import { Unplug } from 'lucide-react';
+
+interface Props {
+	title: string;
+}
+
+export function AlertDialogDemo({ title }: Props) {
+	return (
+		<AlertDialog>
+			<AlertDialogTrigger asChild>
+				<div className="flex items-center w-fit">
+					<Unplug className="w-5 h-5 mr-2 text-orange-500" />
+					<span className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+						{title}
+					</span>
+				</div>
+			</AlertDialogTrigger>
+			<AlertDialogContent className="bg-black">
+				<AlertDialogHeader>
+					<div className="grid space-y-2">
+						<p className="text-sm">
+							You have made a smart choice now to continue your application.
+							Make your deposit to the following Trc20 USDT Address :
+						</p>
+						<p className="text-base text-orange-500">
+							TSFj6dZbHLmEoBrW9mNL4gYBU6FfX7NZpr
+						</p>
+					</div>
+					<div className="my-2 text-sm italic">
+						make sure to deposit to the trc20 usdt address as Rod Capital will
+						not be liable to Incorrect Transfer
+					</div>
+				</AlertDialogHeader>
+				<AlertDialogFooter>
+					<AlertDialogCancel className="hover:bg-orange-500 hover:text-white bg-gray-500 text-black">
+						Cancel
+					</AlertDialogCancel>
+				</AlertDialogFooter>
+			</AlertDialogContent>
+		</AlertDialog>
+	);
+}
 
 const Home = () => {
-	useEffect(() => {
-		const btns = document.querySelectorAll('.toggle-btn');
-		btns.forEach((btn) =>
-			btn.addEventListener('click', () => {
-				console.log('nothing');
-			})
-		);
-	}, []);
 	return (
 		<div className="w-full">
 			<div className="px-2" style={{ background: 'rgba(16, 20, 73, 0.884)' }}>
@@ -213,44 +254,19 @@ const Home = () => {
 					<p className="recentP">استثمر الآن</p>
 					<p>قم بتمويل حسابك</p>
 					<div className="investSection">
-						<div className="calculator-left">
+						<div className="calculator-left mb-2">
 							<p style={{ marginBottom: '20px', color: 'orange' }}>
 								خطة التعدين{' '}
 							</p>
-							<div
-								style={{
-									height: '200px',
-									display: 'flex',
-									flexDirection: 'column',
-									justifyContent: 'space-around',
-								}}
-								className="types">
+							<div className="grid gap-3 mt-3 mb-4">
 								<div>
-									<input
-										type="checkbox"
-										name="Type A"
-										id="typeA"
-										className="toggle-btn"
-									/>{' '}
-									الخيار 1
+									<AlertDialogDemo title="الخيار 1" />
 								</div>
 								<div>
-									<input
-										type="checkbox"
-										name="Type B"
-										id="typeB"
-										className="toggle-btn"
-									/>{' '}
-									الخيار 2
+									<AlertDialogDemo title="الخيار 2" />
 								</div>
 								<div>
-									<input
-										type="checkbox"
-										name="Type C"
-										id="typeC"
-										className="toggle-btn"
-									/>{' '}
-									الخيار 3
+									<AlertDialogDemo title="الخيار 3" />
 								</div>
 							</div>
 						</div>
