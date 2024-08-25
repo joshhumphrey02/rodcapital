@@ -43,7 +43,7 @@ export function AlertDialogDemo({ title }: Props) {
 				</AlertDialogHeader>
 				<AlertDialogFooter>
 					<AlertDialogCancel className="hover:bg-orange-500 hover:text-white bg-gray-500 text-black">
-						Cancel
+						Close
 					</AlertDialogCancel>
 				</AlertDialogFooter>
 			</AlertDialogContent>
