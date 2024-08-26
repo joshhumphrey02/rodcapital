@@ -550,9 +550,7 @@ const Home = () => {
 							<div>
 								<p>هاتف</p>
 								<p className="phone">
-									<span style={{ marginRight: '20px' }}>(123) 456-7890</span>
-									<span style={{ marginRight: '20px' }}>(555) 123-4567</span>
-									<span>(987) 654-3210</span>
+									<span>rodcapitalsmanagement@gmail.com</span>
 								</p>
 							</div>
 						</div>
