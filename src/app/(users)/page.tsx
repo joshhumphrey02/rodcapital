@@ -18,11 +18,8 @@ function AlertDialogDemo({ title }: Props) {
 	return (
 		<AlertDialog>
 			<AlertDialogTrigger asChild>
-				<div className="flex items-center w-fit">
-					<Unplug className="w-5 h-5 mr-2 text-orange-500" />
-					<span className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-						{title}
-					</span>
+				<div className="flex items-center justify-start gap-2">
+					<span className="text-sm ">{title}</span>
 				</div>
 			</AlertDialogTrigger>
 			<AlertDialogContent className="bg-black">
@@ -42,7 +39,7 @@ function AlertDialogDemo({ title }: Props) {
 					</div>
 				</AlertDialogHeader>
 				<AlertDialogFooter>
-					<AlertDialogCancel className="hover:bg-orange-500 hover:text-white bg-gray-500 text-black">
+					<AlertDialogCancel className="hover:bg-orange-500 hover:text-white bg-gray-500 text-black border-0 rounded">
 						Close
 					</AlertDialogCancel>
 				</AlertDialogFooter>
@@ -258,7 +255,7 @@ const Home = () => {
 							<p style={{ marginBottom: '20px', color: 'orange' }}>
 								خطة التعدين{' '}
 							</p>
-							<div className="grid gap-3 mt-3 mb-4">
+							<div className="flex flex-col items-start gap-3 mt-3 mb-4">
 								<div>
 									<AlertDialogDemo title="الخيار 1" />
 								</div>
@@ -335,8 +332,8 @@ const Home = () => {
 							<thead>
 								<td className="thead-data">اسم</td>
 								<td className="thead-data">المبلغ</td>
-								<td className="thead-data">بوابة</td>
-								<td className="thead-data">تاريخ</td>
+								<td className="hidden md:thead-data">بوابة</td>
+								<td className=" hidden mb:thead-data">تاريخ</td>
 								<td className="thead-data">حالة</td>
 							</thead>
 							<tbody>
@@ -344,49 +341,49 @@ const Home = () => {
 									<td>Omar</td>
 									<td>$75,000</td>
 									<td>Binance</td>
-									<td>19th Aug 2024</td>
+									<td className="hidden md:table-cell">19th Aug 2024</td>
 									<td>موافق عليه</td>
 								</tr>
 								<tr>
 									<td>Hassan</td>
 									<td>$14,000</td>
 									<td>CashApp</td>
-									<td>15th Aug 2024</td>
+									<td className="hidden md:table-cell">15th Aug 2024</td>
 									<td>موافق عليه</td>
 								</tr>
 								<tr>
 									<td>Hopkins</td>
 									<td>$6,200</td>
 									<td>Trust Wallet</td>
-									<td>11th Aug 2024</td>
+									<td className="hidden md:table-cell">11th Aug 2024</td>
 									<td>قيد الانتظار </td>
 								</tr>
 								<tr>
 									<td>Lee</td>
 									<td>$3,750</td>
 									<td>CashApp</td>
-									<td>8th Aug 2024</td>
+									<td className="hidden md:table-cell">8th Aug 2024</td>
 									<td>موافق عليه</td>
 								</tr>
 								<tr>
 									<td>Faruk</td>
 									<td>$30,150</td>
 									<td>Bybit</td>
-									<td>3rd Aug 2024</td>
+									<td className="hidden md:table-cell">3rd Aug 2024</td>
 									<td>موافق عليه</td>
 								</tr>
 								<tr>
 									<td>Ray</td>
 									<td>$6,700</td>
 									<td>CashApp</td>
-									<td>29th Jul 2024</td>
+									<td className="hidden md:table-cell">29th Jul 2024</td>
 									<td>موافق عليه</td>
 								</tr>
 								<tr>
 									<td>Fibika</td>
 									<td>$2,000</td>
 									<td>CashApp</td>
-									<td>28th Jul 2024</td>
+									<td className="hidden md:table-cell">28th Jul 2024</td>
 									<td>موافق عليه</td>
 								</tr>
 							</tbody>

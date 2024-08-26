@@ -310,9 +310,13 @@ footer {
 		margin-top: 160px;
 		margin-bottom: 160px;
 		font-size: 20px;
+		width: 100%;
+		padding: 20px;
 	}
 	.investors {
 		height: auto;
+		padding: 10px;
+		width: 100%;
 	}
 	.flex {
 		flex-direction: column;
