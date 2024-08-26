@@ -13,7 +13,7 @@ export default function TabsView(props: Props) {
 	const { data } = props;
 
 	return (
-		<div className="w-[300px] md:w-full">
+		<div className="w-full">
 			<DataTable
 				columns={columns}
 				data={data}

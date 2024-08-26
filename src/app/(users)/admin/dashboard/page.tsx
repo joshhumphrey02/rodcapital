@@ -25,7 +25,7 @@ export default async function Dashboard() {
 	if (!superAdmins.includes(user?.email)) return redirect('/');
 	return (
 		<>
-			<div className="flex-col md:flex w-full">
+			<div className="flex-col md:flex w-full overflow-hidden">
 				<div className="flex-1 space-y-4 p-2 md:p-8 pl-0 pt-6">
 					<div className=" mt-1 mb-3 px-1 pt-2 flex flex-row justify-between items-center">
 						<div>
