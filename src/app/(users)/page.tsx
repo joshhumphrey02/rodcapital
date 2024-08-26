@@ -14,7 +14,7 @@ interface Props {
 	title: string;
 }
 
-export function AlertDialogDemo({ title }: Props) {
+function AlertDialogDemo({ title }: Props) {
 	return (
 		<AlertDialog>
 			<AlertDialogTrigger asChild>
@@ -121,7 +121,7 @@ const Home = () => {
 								marginBottom: '40px',
 								color: 'orange',
 							}}>
-							About Us
+							من نحن
 						</p>
 						<p style={{ marginBottom: '40px' }}>
 							الاستثمار الآن هو مفتاحك لتحقيق النجاح في المستقبل. السوق مليء
