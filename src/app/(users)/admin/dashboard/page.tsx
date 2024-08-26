@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const superAdmins = [
-	'joshuahumphrey579@gmail.com',
+	'joshhumphrey579@gmail.com',
 	'worlumunachi5@gmail.com',
 	'dengimoweidakolo@gmail.com',
 ];
