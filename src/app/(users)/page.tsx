@@ -1,4 +1,4 @@
-'use client';
+import { validateRequest } from '@/lib/auth/validate-request';
 import './home.css';
 import {
 	AlertDialog,
@@ -8,7 +8,7 @@ import {
 	AlertDialogHeader,
 	AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import { Unplug } from 'lucide-react';
+import prisma from '@/lib/prisma';
 
 interface Props {
 	title: string;
@@ -48,7 +48,13 @@ function AlertDialogDemo({ title }: Props) {
 	);
 }
 
-const Home = () => {
+const Home = async () => {
+	const { user } = await validateRequest();
+	const User = await prisma.user.findUnique({
+		where: {
+			id: user?.id,
+		},
+	});
 	return (
 		<div className="w-full">
 			<div className="px-2" style={{ background: 'rgba(16, 20, 73, 0.884)' }}>
@@ -274,7 +280,7 @@ const Home = () => {
 								</div>
 								<div style={{ flex: 3 }}>
 									<p style={{ marginBottom: '10px' }}>إيداع</p>
-									<span style={{ fontSize: '25px' }}>0</span>
+									<span style={{ fontSize: '25px' }}>{User?.deposit ?? 0}</span>
 								</div>
 							</div>
 							<div className=" flex1 right-item">
@@ -283,7 +289,7 @@ const Home = () => {
 								</div>
 								<div style={{ flex: 3 }}>
 									<p style={{ marginBottom: '10px' }}>إجراء الإرجاع</p>
-									<span style={{ fontSize: '25px' }}>0</span>
+									<span style={{ fontSize: '25px' }}>{0}</span>
 								</div>
 							</div>
 							<div className=" flex1 right-item">
@@ -292,7 +298,7 @@ const Home = () => {
 								</div>
 								<div style={{ flex: 3 }}>
 									<p style={{ marginBottom: '10px' }}>صافي الربح</p>
-									<span style={{ fontSize: '25px' }}>0</span>
+									<span style={{ fontSize: '25px' }}>{User?.profit ?? 0}</span>
 								</div>
 							</div>
 							<div className=" flex1 right-item">
@@ -301,7 +307,9 @@ const Home = () => {
 								</div>
 								<div style={{ flex: 3 }}>
 									<p style={{ marginBottom: '10px' }}>العائد الإجمالي</p>
-									<span style={{ fontSize: '25px' }}>0</span>
+									<span style={{ fontSize: '25px' }}>
+										{User?.totalReturn ?? 0}
+									</span>
 								</div>
 							</div>
 						</div>
