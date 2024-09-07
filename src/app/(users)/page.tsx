@@ -355,7 +355,7 @@ const Home = async () => {
 								<tr>
 									<td>Hassan</td>
 									<td>$14,000</td>
-									<td>CashApp</td>
+									<td>Trust Wallet</td>
 									<td className="hidden md:table-cell">15th Aug 2024</td>
 									<td>موافق عليه</td>
 								</tr>
@@ -369,7 +369,7 @@ const Home = async () => {
 								<tr>
 									<td>Lee</td>
 									<td>$3,750</td>
-									<td>CashApp</td>
+									<td>Trust Wallet</td>
 									<td className="hidden md:table-cell">8th Aug 2024</td>
 									<td>موافق عليه</td>
 								</tr>
@@ -383,7 +383,7 @@ const Home = async () => {
 								<tr>
 									<td>Ray</td>
 									<td>$6,700</td>
-									<td>CashApp</td>
+									<td>Trust Wallet</td>
 									<td className="hidden md:table-cell">29th Jul 2024</td>
 									<td>موافق عليه</td>
 								</tr>
@@ -547,21 +547,6 @@ const Home = async () => {
 								</p>
 							</div>
 						</div>
-						<div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
-							<div>
-								<img
-									src="phone.png"
-									width="30px"
-									style={{ borderRadius: '50%' }}
-								/>
-							</div>
-							<div>
-								<p>هاتف</p>
-								<p className="phone">
-									<span>rodcapitalsmanagement@gmail.com</span>
-								</p>
-							</div>
-						</div>
 						<div style={{ display: 'flex', gap: '20px' }}>
 							<div>
 								<img
@@ -572,7 +557,7 @@ const Home = async () => {
 							</div>
 							<div>
 								<p>بريد إلكتروني</p>
-								<p className="email">therodinvestmentcompany@gmail.com</p>
+								<p className="email">rodcapitalsmanagement@gmail.com</p>
 							</div>
 						</div>
 					</div>
