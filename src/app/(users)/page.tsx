@@ -9,6 +9,7 @@ import {
 	AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import prisma from '@/lib/prisma';
+import { Button } from '@/components/ui/button';
 
 interface Props {
 	title: string;
@@ -38,8 +39,8 @@ function AlertDialogDemo({ title }: Props) {
 						not be liable to Incorrect Transfer
 					</div>
 				</AlertDialogHeader>
-				<AlertDialogFooter>
-					<AlertDialogCancel className="hover:bg-orange-500 hover:text-white bg-gray-500 text-black border-0 rounded">
+				<AlertDialogFooter className="flex w-full">
+					<AlertDialogCancel className="hover:bg-orange-500 flex-1 hover:text-white bg-gray-500 text-black border-0 rounded">
 						Close
 					</AlertDialogCancel>
 				</AlertDialogFooter>
@@ -312,6 +313,28 @@ const Home = async () => {
 									</span>
 								</div>
 							</div>
+						</div>
+						<div className="mt-8 mx-auto">
+							<AlertDialog>
+								<AlertDialogTrigger asChild>
+									<Button className="px-8 bg-orange-500">Withdraw</Button>
+								</AlertDialogTrigger>
+								<AlertDialogContent className="bg-black py-6">
+									<AlertDialogHeader>
+										<div className="grid space-y-2 mb-6">
+											<p className="text-sm">
+												Make a payment of your withdrawal fee to be able to
+												receive your payout.
+											</p>
+										</div>
+									</AlertDialogHeader>
+									<AlertDialogFooter className="flex w-full">
+										<AlertDialogCancel className="hover:bg-orange-500 flex-1 hover:text-white bg-gray-500 text-black border-0 rounded">
+											Close
+										</AlertDialogCancel>
+									</AlertDialogFooter>
+								</AlertDialogContent>
+							</AlertDialog>
 						</div>
 					</div>
 				</div>
