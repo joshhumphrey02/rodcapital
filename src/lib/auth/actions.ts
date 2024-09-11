@@ -29,110 +29,124 @@ export async function login(
 	_: any,
 	formData: LoginInput
 ): Promise<ActionResponse<LoginInput>> {
-	const parsed = loginSchema.safeParse(formData);
-	if (!parsed.success) {
-		const err = parsed.error.flatten();
-		return {
-			fieldError: {
-				email: err.fieldErrors.email?.[0],
-				password: err.fieldErrors.password?.[0],
+	try {
+		const parsed = loginSchema.safeParse(formData);
+		if (!parsed.success) {
+			const err = parsed.error.flatten();
+			return {
+				fieldError: {
+					email: err.fieldErrors.email?.[0],
+					password: err.fieldErrors.password?.[0],
+				},
+			};
+		}
+
+		const { email, password } = parsed.data;
+
+		const existingUser = await prisma.user.findFirst({
+			where: {
+				email: {
+					equals: email,
+					mode: 'insensitive',
+				},
 			},
-		};
-	}
+		});
+		if (!existingUser) {
+			return {
+				formError: 'Incorrect email or password',
+			};
+		}
 
-	const { email, password } = parsed.data;
+		if (!existingUser || !existingUser?.hashedPassword) {
+			return {
+				formError: 'Incorrect email or password',
+			};
+		}
+		const validPassword = await new Scrypt().verify(
+			existingUser.hashedPassword,
+			password
+		);
+		if (!validPassword) {
+			return {
+				formError: 'Incorrect email or password',
+			};
+		}
 
-	const existingUser = await prisma.user.findFirst({
-		where: {
-			email: {
-				equals: email,
-				mode: 'insensitive',
-			},
-		},
-	});
-	if (!existingUser) {
+		const session = await lucia.createSession(existingUser.id, {});
+		const sessionCookie = lucia.createSessionCookie(session.id);
+		cookies().set(
+			sessionCookie.name,
+			sessionCookie.value,
+			sessionCookie.attributes
+		);
+		return redirect(Paths.Home);
+	} catch (error) {
+		console.log(error);
 		return {
-			formError: 'Incorrect email or password',
+			formError: 'Something went wrong',
 		};
 	}
-
-	if (!existingUser || !existingUser?.hashedPassword) {
-		return {
-			formError: 'Incorrect email or password',
-		};
-	}
-	const validPassword = await new Scrypt().verify(
-		existingUser.hashedPassword,
-		password
-	);
-	if (!validPassword) {
-		return {
-			formError: 'Incorrect email or password',
-		};
-	}
-
-	const session = await lucia.createSession(existingUser.id, {});
-	const sessionCookie = lucia.createSessionCookie(session.id);
-	cookies().set(
-		sessionCookie.name,
-		sessionCookie.value,
-		sessionCookie.attributes
-	);
-	return redirect(Paths.Home);
 }
 
 export async function signup(
 	_: any,
 	formData: SignupInput
 ): Promise<ActionResponse<SignupInput>> {
-	const parsed = signupSchema.safeParse(formData);
-	if (!parsed.success) {
-		const err = parsed.error.flatten();
-		return {
-			fieldError: {
-				email: err.fieldErrors.email?.[0],
-				password: err.fieldErrors.password?.[0],
-				firstName: err.fieldErrors.firstName?.[0],
-				lastName: err.fieldErrors.lastName?.[0],
+	try {
+		const parsed = signupSchema.safeParse(formData);
+		if (!parsed.success) {
+			const err = parsed.error.flatten();
+			return {
+				fieldError: {
+					email: err.fieldErrors.email?.[0],
+					password: err.fieldErrors.password?.[0],
+					firstName: err.fieldErrors.firstName?.[0],
+					lastName: err.fieldErrors.lastName?.[0],
+				},
+			};
+		}
+
+		const { email, password, firstName, lastName } = parsed.data;
+
+		const existingUser = await prisma.user.findFirst({
+			where: {
+				email: {
+					equals: email,
+					mode: 'insensitive',
+				},
 			},
+		});
+
+		if (existingUser) {
+			return {
+				formError: 'Cannot create account with that email',
+			};
+		}
+
+		const userId = generateId(21);
+		const hashedPassword = await new Scrypt().hash(password);
+
+		await prisma.user.create({
+			data: {
+				id: userId,
+				email,
+				hashedPassword,
+				firstName,
+				lastName,
+			},
+		});
+
+		const session = await lucia.createSession(userId, {});
+		const sessionCookie = lucia.createSessionCookie(session.id);
+		cookies().set(sessionCookie.name, sessionCookie.value);
+		sessionCookie.attributes;
+		return redirect(Paths.Home);
+	} catch (error) {
+		console.log(error);
+		return {
+			formError: 'An error occuried',
 		};
 	}
-
-	const { email, password, firstName, lastName } = parsed.data;
-
-	const existingUser = await prisma.user.findFirst({
-		where: {
-			email: {
-				equals: email,
-				mode: 'insensitive',
-			},
-		},
-	});
-
-	if (existingUser) {
-		return {
-			formError: 'Cannot create account with that email',
-		};
-	}
-
-	const userId = generateId(21);
-	const hashedPassword = await new Scrypt().hash(password);
-
-	await prisma.user.create({
-		data: {
-			id: userId,
-			email,
-			hashedPassword,
-			firstName,
-			lastName,
-		},
-	});
-
-	const session = await lucia.createSession(userId, {});
-	const sessionCookie = lucia.createSessionCookie(session.id);
-	cookies().set(sessionCookie.name, sessionCookie.value);
-	sessionCookie.attributes;
-	return redirect(Paths.Home);
 }
 
 export async function logout(): Promise<{ error: string } | void> {
