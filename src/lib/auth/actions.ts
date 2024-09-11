@@ -92,14 +92,13 @@ export async function signup(
 			fieldError: {
 				email: err.fieldErrors.email?.[0],
 				password: err.fieldErrors.password?.[0],
-				phoneNumber: err.fieldErrors.phoneNumber?.[0],
 				firstName: err.fieldErrors.firstName?.[0],
 				lastName: err.fieldErrors.lastName?.[0],
 			},
 		};
 	}
 
-	const { email, password, firstName, lastName, phoneNumber } = parsed.data;
+	const { email, password, firstName, lastName } = parsed.data;
 
 	const existingUser = await prisma.user.findFirst({
 		where: {
@@ -126,7 +125,6 @@ export async function signup(
 			hashedPassword,
 			firstName,
 			lastName,
-			phoneNumber,
 		},
 	});
 

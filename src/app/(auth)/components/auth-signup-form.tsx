@@ -34,7 +34,6 @@ export default function AuthSignupForm({
 			lastName: '',
 			email: '',
 			password: '',
-			phoneNumber: '',
 		},
 	});
 	const [loading, setLoading] = React.useState(false);
@@ -106,20 +105,6 @@ export default function AuthSignupForm({
 												placeholder="عنوان بريدك الإلكتروني"
 												{...field}
 											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-
-							<FormField
-								control={form.control}
-								name="phoneNumber"
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>رقم الهاتف</FormLabel>
-										<FormControl>
-											<Input type="text" placeholder="رقم هاتفك" {...field} />
 										</FormControl>
 										<FormMessage />
 									</FormItem>
