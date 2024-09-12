@@ -140,7 +140,7 @@ export async function signup(
 		const sessionCookie = lucia.createSessionCookie(session.id);
 		cookies().set(sessionCookie.name, sessionCookie.value);
 		sessionCookie.attributes;
-		return redirect(Paths.Home);
+		return redirect('/');
 	} catch (error) {
 		console.log(error);
 		return {
@@ -163,5 +163,5 @@ export async function logout(): Promise<{ error: string } | void> {
 		sessionCookie.value,
 		sessionCookie.attributes
 	);
-	return redirect('/');
+	return redirect('/login');
 }

@@ -8,7 +8,7 @@ export default async function AuthLayout({
 }>) {
 	const { session, user } = await validateRequest();
 	if (session?.userId) {
-		redirect('/dashboard');
+		redirect('/');
 	}
 	return (
 		<>
